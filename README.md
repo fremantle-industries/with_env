@@ -21,16 +21,25 @@ defmodule HelloTest do
   use ExUnit.Case
   use WithEnv
 
-  test "returns the application configured value" do
+  test "can put values into the env" do
+    assert Application.get_env(:hello, :saying) == nil
+
     with_env put: [hello: [saying: "galaxy"]] do
-      assert Hello.saying() == "galaxy"
+      assert Application.get_env(:hello, :saying) == "galaxy"
     end
+
+    assert Application.get_env(:hello, :saying) == nil
   end
 
-  test "returns 'world' by default" do
+  test "can delete values from the env" do
+    Application.put_env(:hello, :saying, "world")
+
     with_env delete: [hello: [:saying]] do
-      assert Hello.saying() == "world"
+      assert Application.get_env(:hello, :saying) == nil
     end
+
+    assert Application.get_env(:hello, :saying) == "world"
+    assert Application.delete_env(:hello, :saying) == :ok
   end
 end
 ```
