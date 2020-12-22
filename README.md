@@ -10,7 +10,7 @@ Add the `with_env` package to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:with_env, "~> 0.1"}]
+  [{:with_env, "~> 0.1", only: :test}]
 end
 ```
 
