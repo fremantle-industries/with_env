@@ -5,7 +5,7 @@ defmodule WithEnv.MixProject do
     [
       app: :with_env,
       version: "0.1.0",
-      elixir: "~> 1.7",
+      elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       package: package(),
       description: description(),
